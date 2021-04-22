@@ -19,7 +19,7 @@ class CreateSolicitacaoTrocaTable extends Migration
             $table->string('rua',255);
             $table->string('numero',4);
             $table->string('bairro',30);
-            $table->string('complemento',4);
+            $table->string('complemento',4)->nullable();
             $table->string('status',15);
             $table->string('codigo',10);
             $table->timestamps();
