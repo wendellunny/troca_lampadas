@@ -14,7 +14,8 @@ class SolicitacaoController extends Controller
      */
     public function index()
     {
-        //
+        $dataModel = SolicitacaoTroca::all();
+        return response()->json(['solicitacoes'=>$dataModel]);
     }
 
     /**
@@ -57,7 +58,10 @@ class SolicitacaoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $dataModel =  SolicitacaoTroca::findOrFail($id);
+        $dataModel->update($data);
+
     }
 
     /**
@@ -66,8 +70,11 @@ class SolicitacaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($codigo)
     {
-        //
+        $data = SolicitacaoTroca::where('codigo' ,'=', $codigo);
+        $data->delete();
+        return response()->json(['msg'=>'Solicitação Cancelada com Sucesso']);
     }
+    
 }

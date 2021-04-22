@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-
+Route::get('/todassolicitacoes',[SolicitacaoController::class,'index'])->middleware('auth');
+Route::put('alterarstatus/{id}',[SolicitacaoController::class,'update'])->middleware('auth');
 Route::post('/solicitar',[SolicitacaoController::class,'store']);
 Route::get('acompanhar/{codigo}',[SolicitacaoController::class,'show']);
+Route::delete('cancelar/{codigo}',[SolicitacaoController::class,'destroy']);
